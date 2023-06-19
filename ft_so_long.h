@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FT_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/06/13 09:22:53 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:36:38 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include FT_SO_LONG_H
-# define FT_PIPEX_H
+#ifndef FT_SO_LONG_H
+# define FT_SO_LONG_H
 
 # include <unistd.h>
 # include <stdio.h>
@@ -19,6 +19,13 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <math.h>
+# include <stdlib.h>
 # include "libft/libft.h"
+# include "minilibx/mlx.h"
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
 
 #endif

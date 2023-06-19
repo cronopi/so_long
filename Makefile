@@ -1,23 +1,24 @@
 RM = rm -f
 
 CC = gcc
+FLAGS_MLX = -Lminilibx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
 FLAGS = -Wall -Wextra -Werror
 
 LIBFT= -L libft -lft
 
 NAME = so_long
-SRC =
+SRC = main.c
 
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(CC) $(FLAGS) $(FLAGS_MLX) -c -o $@ $<
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C libft
-	$(CC) $(OBJ) $(FLAGS) $(LIBFT) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(FLAGS_MLX) $(LIBFT) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
