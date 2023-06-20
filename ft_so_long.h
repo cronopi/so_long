@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/06/19 15:36:38 by roberto          ###   ########.fr       */
+/*   Updated: 2023/06/20 09:21:42 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,19 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include "minilibx/mlx.h"
-
+//# include "mlx/mlx.h"
+# include "mlx.h" 
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 }				t_vars;
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 #endif

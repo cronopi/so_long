@@ -1,7 +1,8 @@
 RM = rm -f
 
 CC = gcc
-FLAGS_MLX = -Lminilibx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
+#FLAGS_MLX = -Lmlx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
+FLAGS_MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 FLAGS = -Wall -Wextra -Werror
 
 LIBFT= -L libft -lft
@@ -11,8 +12,11 @@ SRC = main.c
 
 OBJ = $(SRC:.c=.o)
 
+#%.o: %.c
+#	$(CC) $(FLAGS) $(FLAGS_MLX) -c -o $@ $<
+
 %.o: %.c
-	$(CC) $(FLAGS) $(FLAGS_MLX) -c -o $@ $<
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 all: $(NAME)
 
