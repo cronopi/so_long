@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"ft_so_long.h": "c"
+		"ft_so_long.h": "c",
+		"errno.h": "c"
 	}
 }
