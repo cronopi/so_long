@@ -20,21 +20,22 @@ void	movements_keys(int key, t_patata *init)
 	printf("test%i\n", key);
 	if (key == 65362) // w 119
 	{
-		init->a.y -= 10;
+		init->a.y -= 48;
 	}
 	else if (key == 65361) // a 97
 	{
-		init->a.x -= 10;
+		init->a.x -= 48;
 	}
 	else if (key == 65364) // s 115
 	{
-		init->a.y += 10;
+		init->a.y += 48;
 	}
 	else if (key == 65363) // d 100
 	{
-		init->a.x += 10;
+		init->a.x += 48;
 	}
 }
+
 
 int	key_hook(int key, t_patata *init)
 {
@@ -57,9 +58,9 @@ int	print_main_caracter(t_patata *patata)
 void	ft_funtion(t_patata *patata)
 {
 	mlx_loop_hook(patata->mlx, print_main_caracter, patata);
-	//mlx_loop_hook(patata->mlx, draw_circle, patata);
 	mlx_loop(patata->mlx);
 }
+
 t_patata	set_up(t_vars	vars, t_data img)
 {
 	t_patata		patata;
@@ -69,7 +70,7 @@ t_patata	set_up(t_vars	vars, t_data img)
 	patata.mlx = vars.mlx;
 	patata.win = vars.win;
 	patata.img.img2 = img.img2;
-	patata.img.img2 = mlx_xpm_file_to_image(patata.mlx, "logo copy.xpm", &(patata.a.x), &(patata.a.y));
+	patata.img.img2 = mlx_xpm_file_to_image(patata.mlx, "pac_open_right.xpm", &(patata.a.x), &(patata.a.y));
 	return (patata);
 }
 
@@ -91,7 +92,7 @@ int	main(void)
 	init = set_up(vars, img);
 	mlx_hook(vars.win, 2, 1L<<0, key_hook, &init);
 
-	init.img.img =  mlx_new_image(init.mlx, WINDOW_WIDTH, WINDOW_HEIGHT); // mlx setup
+	init.img.img =  mlx_new_image(init.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	ft_funtion(&init);
 

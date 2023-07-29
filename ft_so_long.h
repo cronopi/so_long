@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nazurmen <nazurmen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/06/23 18:01:45 by roberto          ###   ########.fr       */
+/*   Updated: 2023/07/29 16:53:36 by nazurmen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,27 @@ typedef struct	s_vars {
 	void	*win;
 }				t_vars;
 
-typedef struct	s_data {
-	void	*img;
-	void	*img2;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 typedef struct s_coordinates
 {
 	int	x;
 	int	y;
 }			t_coordinates;
+
+typedef struct	s_data {
+	void			*img;
+	void			*pacman;
+	void			*exit_portal;
+	void			*wall;
+	void			*colectables;
+	int				line_length;
+	char			**map;
+	int				colectables_count;
+	t_coordinates	player;
+	t_coordinates	exit;
+	t_coordinates	wall_size;
+	t_coordinates	colectables_size;
+}				t_data;
+
 
 typedef struct s_patata
 {
