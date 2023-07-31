@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nazurmen <nazurmen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/07/29 16:53:36 by nazurmen         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:20:00 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_coordinates
 }			t_coordinates;
 
 typedef struct	s_data {
+	int				steps;
 	void			*img;
 	void			*pacman;
 	void			*exit_portal;
@@ -58,5 +59,16 @@ typedef struct s_patata
 	void			*mlx;
 	void 			*win;
 }			t_patata;
+
+t_coordinates	exit_position(char **tokens);
+t_coordinates	player_position(char **tokens);
+t_coordinates	map_lengh_high(char **map);
+int				count_colectables(char **tokens, t_patata *data);
+void			check_items(char **tokens);
+void			ft_funtion(t_patata *data);
+int				key_hook(int key, t_patata *init);
+void			set_up(t_vars	vars, t_patata *patata);
+void			check_map(char **tokens);
+char			**open_map(int argc, char **argv);
 
 #endif

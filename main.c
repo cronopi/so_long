@@ -16,9 +16,8 @@
 # define WINDOW_HEIGHT 500
 
 // cmprobar que lo pintado tiene jugador monedas salida etc ACCESIBLE
-// contar numero de movimientos
 
-t_coordinates	player_position(char **tokens)
+/* t_coordinates	player_position(char **tokens)
 {
 	t_coordinates	player;
 
@@ -36,9 +35,9 @@ t_coordinates	player_position(char **tokens)
 		player.x = 0;
 	}
 	return (player);
-}
+} */
 
-t_coordinates	exit_position(char **tokens)
+/* t_coordinates	exit_position(char **tokens)
 {
 	t_coordinates	exit;
 
@@ -56,9 +55,9 @@ t_coordinates	exit_position(char **tokens)
 		exit.x = 0;
 	}
 	return (exit);
-}
+} */
 
-void floodfill(char **duplicate, int x, int y)
+/* void	floodfill(char **duplicate, int x, int y)
 {
 	duplicate[y][x] = 'v';
 
@@ -70,18 +69,18 @@ void floodfill(char **duplicate, int x, int y)
 		floodfill(duplicate, x, y + 1);
 	if (x >= 0 && duplicate[y][x - 1] != '1' && duplicate[y][x - 1] != 'v')
 		floodfill(duplicate, x - 1, y);
-}
+} */
 
-void check_floors(char **duplicate)
+/* void check_floors(char **duplicate)
 {
 	t_coordinates	player;
 
 	player = player_position(duplicate);
 	duplicate[player.y][player.x] = 'v';
 	floodfill(duplicate, player.x, player.y);
-}
+} */
 
-int	count_colectables(char **tokens, t_patata *data)
+/* int	count_colectables(char **tokens, t_patata *data)
 {
 	int		i;
 	int		j;
@@ -101,9 +100,9 @@ int	count_colectables(char **tokens, t_patata *data)
 		j = 0;
 	}
 	return (data->img.colectables_count);
-}
+} */
 
-void	check_items(char **tokens)
+/* void	check_items(char **tokens)
 {
 	int		i;
 	int		j;
@@ -146,9 +145,9 @@ void	check_items(char **tokens)
 		perror("Error: map");
 		exit(1);
 	}
-}
+} */
 
-char	**duplicate_map(char **tokens)
+/* char	**duplicate_map(char **tokens)
 {
 	int	y;
 	int x;
@@ -173,9 +172,9 @@ char	**duplicate_map(char **tokens)
 		duplicate[y] = ft_strdup(tokens[y]);
 	}
 	return (duplicate);
-}
+} */
 
-void	check_map(char **tokens)
+/*void	check_map(char **tokens)
 {
 	int		i;
 	int		j;
@@ -207,9 +206,9 @@ void	check_map(char **tokens)
 	}
 	duplicate_maps = duplicate_map(tokens);
 	check_floors(duplicate_maps);
-}
+} */
 
-t_coordinates	map_lengh_high(char **map)
+/* t_coordinates	map_lengh_high(char **map)
 {
 	t_coordinates size;
 
@@ -222,24 +221,45 @@ t_coordinates	map_lengh_high(char **map)
 		size.y++;
 	}
 	return (size);
-}
+} */
 
-char **open_map(int argc, char **argv)
+/*char **open_map(int argc, char **argv)
 {
 	int	fd;
 	char **tokens;
 	int	i;
 	int j;
+	int check;
 
 	tokens = NULL;
 	i = 0;
 	j = 0;
-/* 	if (argc != 2)
+	check = 0;
+	if (argc != 2)
 	{
 		perror("Error: map");
 		exit(1);
-	} */
-	fd = open("map.ber", O_RDONLY);
+	}
+	if (argv[1]) // que tenga nombre .ber y nada más despues
+	{
+		while(argv[1][i] != '\0')
+		{
+			if (argv[1][i] == '.')
+				if (strcmp(&argv[1][i], ".ber") == 0)
+				{
+					printf("estas bien\n");
+					check = 1;
+				}
+			i++;
+		}
+		if (argv[1][i] != '\0' && check == 0)
+		{
+			printf("test2\n");
+			perror("Error: map");
+		}
+	}
+	i = 0;
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		perror("file not found");
@@ -251,7 +271,7 @@ char **open_map(int argc, char **argv)
 	if (!tokens)
 		return (0);
 	close(fd);
-	fd = open("map.ber", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	while (j <= i)
 	{
 		tokens[j] = get_next_line(fd);
@@ -262,16 +282,13 @@ char **open_map(int argc, char **argv)
 	while(tokens[i][j])
 		j++;
 	check_map(tokens);
-	//check_floors(tokens);
 	map_lengh_high(tokens);
 	j = 0;
 	close(fd);
-	(void) argc;
-	(void) argv;
 	return (tokens);
-}
+} */
 
-int	print_main_caracter(t_patata *data)
+/* int	print_main_caracter(t_patata *data)
 {
 	t_coordinates	size;
 	int				colectable_x;
@@ -314,22 +331,29 @@ int	print_main_caracter(t_patata *data)
 	if (!(data->img.colectables_count > 0))
 		mlx_put_image_to_window(data->mlx, data->win, data->img.exit_portal, data->img.exit.x, data->img.exit.y);
 	return (0);
-}
+} */
 
-void	ft_funtion(t_patata *data)
+/* void	ft_funtion(t_patata *data)
 {
 	mlx_loop_hook(data->mlx, print_main_caracter, data);
 	mlx_loop(data->mlx);
+} */
+
+int	close_window(t_patata *init)
+{
+	mlx_destroy_window(init->mlx, init->win);
+	exit(0);
+	return (0);
 }
 
-void	movements_keys(int key, t_patata *init)
+/* void	movements_keys(int key, t_patata *init)
 {
-
 	if (key == 65362)
 	{
 		if (!(init->img.map[((init->img.player.y -32 ) / 32) - 1][(init->img.player.x - 32 ) / 32] == '1'))
 		{
 			init->img.player.y -= 32;
+			init->img.steps++;
 		}
 	}
 	else if (key == 65361)
@@ -337,6 +361,7 @@ void	movements_keys(int key, t_patata *init)
 		if (!(init->img.map[(init->img.player.y - 32 ) / 32][((init->img.player.x - 32 ) / 32) - 1] == '1'))
 		{
 			init->img.player.x -= 32;
+			init->img.steps++;
 		}
 	}
 	else if (key == 65364)
@@ -344,6 +369,7 @@ void	movements_keys(int key, t_patata *init)
 		if (!(init->img.map[((init->img.player.y - 32 ) / 32) + 1][(init->img.player.x - 32 ) / 32] == '1'))
 		{
 			init->img.player.y += 32;
+			init->img.steps++;
 		}
 	}
 	else if (key == 65363)
@@ -351,23 +377,26 @@ void	movements_keys(int key, t_patata *init)
 		if (!(init->img.map[(init->img.player.y - 32 ) / 32][((init->img.player.x - 32 ) / 32) + 1] == '1'))
 		{
 			init->img.player.x += 32;
+			init->img.steps++;
 		}
 	}
-}
+} */
 
-int	key_hook(int key, t_patata *init)
+/* int	key_hook(int key, t_patata *init)
 {
 	movements_keys(key, init);
+	printf("numero de pasos: %d\n", init->img.steps);
 	if (key == 65307)
 	{
 		mlx_destroy_window(init->mlx, init->win);
 		exit(0);
 	}
 	return(0);
-}
+} */
 
-void	set_up(t_vars	vars, t_patata *patata)
+/* void	set_up(t_vars	vars, t_patata *patata)
 {
+	patata->img.steps = 0;
 	patata->img.colectables_count = count_colectables(patata->img.map, patata);
 	patata->img.exit = exit_position(patata->img.map);
 	patata->img.player = player_position(patata->img.map);
@@ -381,7 +410,7 @@ void	set_up(t_vars	vars, t_patata *patata)
 	patata->img.wall =  mlx_xpm_file_to_image(patata->mlx, "wall.xpm", &patata->img.wall_size.x, &patata->img.wall_size.y);
 	patata->img.colectables =  mlx_xpm_file_to_image(patata->mlx, "pacdot_food.xpm", &patata->img.colectables_size.x, &patata->img.colectables_size.y);
 	patata->img.pacman = mlx_xpm_file_to_image(patata->mlx, "pac_open_right.xpm", &(patata->a.x), &(patata->a.y));
-}
+} */
 
 int	main(int argc, char **argv)
 {
@@ -402,6 +431,7 @@ int	main(int argc, char **argv)
 	}
 	set_up(vars, &init);
 	mlx_hook(vars.win, 2, 1L<<0, key_hook, &init);
+	mlx_hook(vars.win, 17, 1L<<17, close_window, &init);
 	init.img.img =  mlx_new_image(init.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	ft_funtion(&init);
 	mlx_loop(vars.mlx);

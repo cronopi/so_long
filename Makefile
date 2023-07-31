@@ -8,7 +8,7 @@ FLAGS = -Wall -Wextra -Werror
 LIBFT= -L libft -lft
 
 NAME = so_long
-SRC = main3.c
+SRC = main.c map.c check_map.c player_position.c map_lengh.c exit_position.c set_up.c key_hook.c loop_hook.c check_items.c count_colectables.c
 
 OBJ = $(SRC:.c=.o)
 
