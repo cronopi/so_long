@@ -2,36 +2,39 @@
 
 void	movements_keys(int key, t_patata *init)
 {
-	if (key == 65362)
+	if (init->img.player_exit == 1)
 	{
-		if (!(init->img.map[((init->img.player.y -32 ) / 32) - 1][(init->img.player.x - 32 ) / 32] == '1'))
+		if (key == 65362)
 		{
-			init->img.player.y -= 32;
-			init->img.steps++;
+			if (!(init->img.map[((init->img.player.y -32 ) / 32) - 1][(init->img.player.x - 32 ) / 32] == '1'))
+			{
+				init->img.player.y -= 32;
+				init->img.steps++;
+			}
 		}
-	}
-	else if (key == 65361)
-	{
-		if (!(init->img.map[(init->img.player.y - 32 ) / 32][((init->img.player.x - 32 ) / 32) - 1] == '1'))
+		else if (key == 65361)
 		{
-			init->img.player.x -= 32;
-			init->img.steps++;
+			if (!(init->img.map[(init->img.player.y - 32 ) / 32][((init->img.player.x - 32 ) / 32) - 1] == '1'))
+			{
+				init->img.player.x -= 32;
+				init->img.steps++;
+			}
 		}
-	}
-	else if (key == 65364)
-	{
-		if (!(init->img.map[((init->img.player.y - 32 ) / 32) + 1][(init->img.player.x - 32 ) / 32] == '1'))
+		else if (key == 65364)
 		{
-			init->img.player.y += 32;
-			init->img.steps++;
+			if (!(init->img.map[((init->img.player.y - 32 ) / 32) + 1][(init->img.player.x - 32 ) / 32] == '1'))
+			{
+				init->img.player.y += 32;
+				init->img.steps++;
+			}
 		}
-	}
-	else if (key == 65363)
-	{
-		if (!(init->img.map[(init->img.player.y - 32 ) / 32][((init->img.player.x - 32 ) / 32) + 1] == '1'))
+		else if (key == 65363)
 		{
-			init->img.player.x += 32;
-			init->img.steps++;
+			if (!(init->img.map[(init->img.player.y - 32 ) / 32][((init->img.player.x - 32 ) / 32) + 1] == '1'))
+			{
+				init->img.player.x += 32;
+				init->img.steps++;
+			}
 		}
 	}
 }
@@ -41,9 +44,6 @@ int	key_hook(int key, t_patata *init)
 	movements_keys(key, init);
 	printf("numero de pasos: %d\n", init->img.steps);
 	if (key == 65307)
-	{
 		mlx_destroy_window(init->mlx, init->win);
-		exit(0);
-	}
 	return(0);
 }

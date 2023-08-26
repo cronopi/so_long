@@ -17,22 +17,21 @@ char	**open_map(int argc, char **argv)
 		perror("Error: map");
 		exit(1);
 	}
-	if (argv[1]) // que tenga nombre .ber y nada más despues
+	if (argv[1])
 	{
 		while(argv[1][i] != '\0')
 		{
-			if (argv[1][i] == '.')
-				if (strcmp(&argv[1][i], ".ber") == 0)
-				{
-					printf("estas bien\n");
-					check = 1;
-				}
+			if (argv[1][i] == '.' && argv[1][i + 1] == 'b' && argv[1][i + 2] == 'e' && argv[1][i + 3] == 'r' && argv[1][i + 4] == '\0')
+			{
+				printf("estas bien\n");
+				check = 1;
+			}
 			i++;
 		}
-		if (argv[1][i] != '\0' && check == 0)
+		if (check == 0)
 		{
-			printf("test2\n");
 			perror("Error: map");
+			exit(0);
 		}
 	}
 	i = 0;
@@ -42,7 +41,7 @@ char	**open_map(int argc, char **argv)
 		perror("file not found");
 		exit(1);
 	}
-	while(get_next_line(fd))
+	while(get_next_line(fd)) // contar lineas con gnl o igualarlo pero norma
 		i++;
 	tokens = malloc(sizeof(char *) * (i + 1));
 	if (!tokens)

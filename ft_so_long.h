@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/07/31 19:20:00 by roberto          ###   ########.fr       */
+/*   Updated: 2023/08/02 16:09:04 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ typedef struct	s_data {
 	void			*exit_portal;
 	void			*wall;
 	void			*colectables;
+	void			*end_game;
 	int				line_length;
 	char			**map;
 	int				colectables_count;
+	int				player_exit;
+	t_coordinates	end_game_size;
 	t_coordinates	player;
 	t_coordinates	exit;
 	t_coordinates	wall_size;
@@ -67,7 +70,7 @@ int				count_colectables(char **tokens, t_patata *data);
 void			check_items(char **tokens);
 void			ft_funtion(t_patata *data);
 int				key_hook(int key, t_patata *init);
-void			set_up(t_vars	vars, t_patata *patata);
+void			set_up(t_patata *patata);
 void			check_map(char **tokens);
 char			**open_map(int argc, char **argv);
 

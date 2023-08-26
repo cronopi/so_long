@@ -80,6 +80,13 @@ void	check_map(char **tokens)
 		else
 			perror("Error: map");
 	}
+	i = 0;
 	duplicate_maps = duplicate_map(tokens);
 	check_floors(duplicate_maps);
+	while(duplicate_maps[i] != NULL)
+	{
+		free(duplicate_maps[i]);
+		i++;
+	}
+	free(duplicate_maps);
 }

@@ -23,11 +23,20 @@ int	print_main_caracter(t_patata *data)
 				mlx_put_image_to_window(data->mlx, data->win, data->img.wall, 32 + wall_x, 32 + wall_y);
 			if (data->img.map[size.y][size.x] == 'C')
 				mlx_put_image_to_window(data->mlx, data->win, data->img.colectables, 32 + colectable_x, 32 + colectable_y);
+			if (data->img.map[size.y][size.x] == 'E' && data->img.colectables_count == 0)
+				mlx_put_image_to_window(data->mlx, data->win, data->img.exit_portal, 32 + wall_x, 32 + wall_y);
 			if (data->img.map[((data->img.player.y -32 ) / 32)][(data->img.player.x - 32 ) / 32] == 'C')
 			{
 				data->img.map[((data->img.player.y -32 ) / 32)][(data->img.player.x - 32 ) / 32] = '0';
 				data->img.colectables_count--;
 				ft_printf("numero de colecionables: %d\n", data->img.colectables_count);
+			}
+			if (data->img.map[((data->img.player.y -32 ) / 32)][(data->img.player.x - 32 ) / 32] == 'E' && data->img.colectables_count == 0)
+			{
+				data->img.player_exit = 0;
+				data->img.map[((data->img.player.y -32 ) / 32)][(data->img.player.x - 32 ) / 32] = '0';
+
+				ft_printf("Fin de la partida!\n");
 			}
 			wall_x = wall_x + 32;
 			colectable_x = colectable_x + 32;
@@ -40,8 +49,8 @@ int	print_main_caracter(t_patata *data)
 		size.y++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.pacman, data->img.player.x, data->img.player.y);
-	if (!(data->img.colectables_count > 0))
-		mlx_put_image_to_window(data->mlx, data->win, data->img.exit_portal, data->img.exit.x, data->img.exit.y);
+	if (data->img.player_exit == 0)
+		mlx_put_image_to_window(data->mlx, data->win, data->img.end_game, 0, 0); // tamaño de pantalla y tamaño imagen
 	return (0);
 }
 
