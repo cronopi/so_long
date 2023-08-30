@@ -27,13 +27,14 @@ void	free_double_pointer(t_patata *init)
 
 void	close_program(t_patata *init)
 {
-	mlx_destroy_image(init->mlx, init->img.end_game);
-	mlx_destroy_image(init->mlx, init->img.pacman);
+	mlx_destroy_image(init->mlx, init->img.pacman[0]);
+	mlx_destroy_image(init->mlx, init->img.pacman[1]);
+	mlx_destroy_image(init->mlx, init->img.pacman[2]);
+	mlx_destroy_image(init->mlx, init->img.pacman[3]);
 	mlx_destroy_image(init->mlx, init->img.exit_portal);
 	mlx_destroy_image(init->mlx, init->img.wall);
 	mlx_destroy_image(init->mlx, init->img.colectables);
 	free_double_pointer(init);
-	//mlx_destroy_display(init->mlx);
 }
 
 int	close_window(t_patata *init)
@@ -55,18 +56,15 @@ int	main(int argc, char **argv)
 	init.win = mlx_new_window(init.mlx, (map_size.x * 32) + 64, (map_size.y * 32) + 64, "so_long");
 	if (init.win == NULL)
 	{
-		//free_double_pointer(&init);
+		free_double_pointer(&init);
 		return (1);
 	}
-	/* set_up(&init);
+	set_up(&init);
 	mlx_hook(init.win, 2, 1L<<0, key_hook, &init);
 	mlx_hook(init.win, 17, 1L<<17, close_window, &init);
 	ft_funtion(&init);
 	mlx_loop(init.mlx);
 	close_program(&init);
-	printf("test\n"); */
-	close_window(&init);
-	mlx_destroy_display(init.mlx);
-	free_double_pointer(&init);
+	//free_double_pointer(&init);
 	return (0);
 }

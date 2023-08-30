@@ -48,9 +48,13 @@ int	print_main_caracter(t_patata *data)
 		wall_x = 0;
 		size.y++;
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.pacman, data->img.player.x, data->img.player.y);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.pacman[data->img.direction], data->img.player.x, data->img.player.y);
 	if (data->img.player_exit == 0)
-		mlx_put_image_to_window(data->mlx, data->win, data->img.end_game, 0, 0); // tamaño de pantalla y tamaño imagen
+	{
+		close_window(data);
+		close_program(data);
+		exit(1);
+	}
 	return (0);
 }
 

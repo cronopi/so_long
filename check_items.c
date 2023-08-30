@@ -28,17 +28,7 @@ void	check_items(char **tokens)
 		i++;
 		j = 0;
 	}
-	if (E != 1)
-	{
-		perror("Error: map");
-		exit(1);
-	}
-	else if (P != 1)
-	{
-		perror("Error: map");
-		exit(1);
-	}
-	else if (C < 1)
+	if (E != 1 || P != 1 || C < 1)
 	{
 		perror("Error: map");
 		exit(1);

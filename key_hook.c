@@ -10,6 +10,7 @@ void	movements_keys(int key, t_patata *init)
 			{
 				init->img.player.y -= 32;
 				init->img.steps++;
+				init->img.direction = 1;
 			}
 		}
 		else if (key == 65361)
@@ -18,6 +19,7 @@ void	movements_keys(int key, t_patata *init)
 			{
 				init->img.player.x -= 32;
 				init->img.steps++;
+				init->img.direction = 3;
 			}
 		}
 		else if (key == 65364)
@@ -26,6 +28,7 @@ void	movements_keys(int key, t_patata *init)
 			{
 				init->img.player.y += 32;
 				init->img.steps++;
+				init->img.direction = 2;
 			}
 		}
 		else if (key == 65363)
@@ -34,6 +37,7 @@ void	movements_keys(int key, t_patata *init)
 			{
 				init->img.player.x += 32;
 				init->img.steps++;
+				init->img.direction = 0;
 			}
 		}
 	}

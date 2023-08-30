@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/02 16:09:04 by roberto          ###   ########.fr       */
+/*   Updated: 2023/08/30 14:01:12 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "mlx/mlx.h"
-//# include "mlx.h"
+//# include "mlx.h" // puede ser <>
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -37,12 +37,12 @@ typedef struct s_coordinates
 
 typedef struct	s_data {
 	int				steps;
+	int				direction;
 	void			*img;
-	void			*pacman;
+	void			*pacman[4];
 	void			*exit_portal;
 	void			*wall;
 	void			*colectables;
-	void			*end_game;
 	int				line_length;
 	char			**map;
 	int				colectables_count;
@@ -73,5 +73,7 @@ int				key_hook(int key, t_patata *init);
 void			set_up(t_patata *patata);
 void			check_map(char **tokens);
 char			**open_map(int argc, char **argv);
+void			close_program(t_patata *init);
+int				close_window(t_patata *init);
 
 #endif

@@ -69,7 +69,7 @@ void	check_map(char **tokens)
 	i = 0;
 	if (j < 3)
 	{
-		perror("Error: map");
+		ft_putstr_fd("Error: map\n", 2);
 		exit(1);
 	}
 	check_numbers = ft_strlen(tokens[i]);
@@ -78,7 +78,10 @@ void	check_map(char **tokens)
 		if (check_numbers == ft_strlen(tokens[i]))
 			i++;
 		else
-			perror("Error: map");
+		{
+			ft_putstr_fd("Error: map\n", 2);
+			exit(1);
+		}
 	}
 	i = 0;
 	duplicate_maps = duplicate_map(tokens);
