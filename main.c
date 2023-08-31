@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nazurmen <nazurmen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 10:40:55 by rcastano          #+#    #+#             */
-/*   Updated: 2023/06/21 14:56:104 by nazurmen         ###   ########.fr       */
+/*   Created: 2023/08/31 11:20:26 by rcastano          #+#    #+#             */
+/*   Updated: 2023/08/31 11:38:40 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_so_long.h"
+#include "ft_so_long.h"
 
 void	free_double_pointer(t_patata *init)
 {
 	int	i;
 
 	i = 0;
-	while(init->img.map[i] != NULL)
+	while (init->img.map[i] != NULL)
 	{
 		free(init->img.map[i]);
 		i++;
@@ -53,18 +53,19 @@ int	main(int argc, char **argv)
 		return (1);
 	init.img.map = open_map(argc, argv);
 	map_size = map_lengh_high(init.img.map);
-	init.win = mlx_new_window(init.mlx, (map_size.x * 32) + 64, (map_size.y * 32) + 64, "so_long");
+	init.win = mlx_new_window(init.mlx, (map_size.x * 32)
+			+ 64, (map_size.y * 32) + 64, "so_long");
 	if (init.win == NULL)
 	{
 		free_double_pointer(&init);
 		return (1);
 	}
 	set_up(&init);
-	mlx_hook(init.win, 2, 1L<<0, key_hook, &init);
-	mlx_hook(init.win, 17, 1L<<17, close_window, &init);
+	mlx_hook(init.win, 2, 1L << 0, key_hook, &init);
+	mlx_hook(init.win, 17, 1L << 17, close_window, &init);
 	ft_funtion(&init);
 	mlx_loop(init.mlx);
 	close_program(&init);
-	//free_double_pointer(&init);
+	free_double_pointer(&init);
 	return (0);
 }

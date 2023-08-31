@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/30 14:01:12 by roberto          ###   ########.fr       */
+/*   Updated: 2023/08/31 10:53:52 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h"
-//# include "mlx.h" // puede ser <>
+//# include "mlx/mlx.h"
+# include <mlx.h>
 
-typedef struct	s_vars {
+typedef struct s_vars {
 	void	*mlx;
 	void	*win;
 }				t_vars;
@@ -35,7 +35,7 @@ typedef struct s_coordinates
 	int	y;
 }			t_coordinates;
 
-typedef struct	s_data {
+typedef struct s_data {
 	int				steps;
 	int				direction;
 	void			*img;
@@ -54,14 +54,12 @@ typedef struct	s_data {
 	t_coordinates	colectables_size;
 }				t_data;
 
-
-typedef struct s_patata
-{
+typedef struct s_patata {
 	t_coordinates	a;
 	t_data			img;
 	void			*mlx;
-	void 			*win;
-}			t_patata;
+	void			*win;
+}				t_patata;
 
 t_coordinates	exit_position(char **tokens);
 t_coordinates	player_position(char **tokens);
