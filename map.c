@@ -6,7 +6,7 @@
 /*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:40:53 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/31 11:49:16 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:51:49 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	error_map(void)
 void	check_valid_ber(char **argv)
 {
 	int	i;
+	int		check;
 
 	i = 0;
+	check = 0;
 	if (argv[1])
 	{
 		while (argv[1][i] != '\0')
@@ -47,18 +49,15 @@ char	**open_map(int argc, char **argv)
 	char	**tokens;
 	int		i;
 	int		j;
-	int		check;
 
 	tokens = NULL;
-	i = 0;
 	j = 0;
-	check = 0;
 	if (argc != 2)
 	{
 		perror("Error: map");
 		exit(1);
 	}
-	if (argv[1])
+	/* if (argv[1])
 	{
 		while (argv[1][i] != '\0')
 		{
@@ -73,7 +72,8 @@ char	**open_map(int argc, char **argv)
 			perror("Error: map");
 			exit(1);
 		}
-	}
+	} */
+	check_valid_ber(argv);
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
