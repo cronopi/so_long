@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/31 10:53:52 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/01 14:40:14 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-//# include "mlx/mlx.h"
-# include <mlx.h>
+# include "mlx/mlx.h"
+//# include <mlx.h>
 
 typedef struct s_vars {
 	void	*mlx;
@@ -69,9 +69,10 @@ void			check_items(char **tokens);
 void			ft_funtion(t_patata *data);
 int				key_hook(int key, t_patata *init);
 void			set_up(t_patata *patata);
-void			check_map(char **tokens);
-char			**open_map(int argc, char **argv);
+void			check_map(char **tokens, t_patata *init);
+char			**open_map(int argc, char **argv, t_patata *init);
 void			close_program(t_patata *init);
 int				close_window(t_patata *init);
+void			free_map(char **map);
 
 #endif

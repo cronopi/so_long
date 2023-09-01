@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:35:41 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/31 10:50:31 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/01 14:39:57 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	**duplicate_map(char **tokens)
 	return (duplicate);
 }
 
-/* int	count_lines(char tokens)
+/* int	count_lines(char tokens) // desactializado
 {
 	int	i;
 	int	j;
@@ -81,14 +81,14 @@ char	**duplicate_map(char **tokens)
 	{
 		ft_putstr_fd("Error: map\n", 2);
 		exit(1);
-	} 
+	}
 	return (j);
 } */
 
 /* void	check_left_to_right(char **tokens, int j)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < j)
 	{
@@ -102,30 +102,31 @@ char	**duplicate_map(char **tokens)
 	}
 } */
 
-void	check_map(char **tokens)
+void	check_map(char **tokens, t_patata *init)
 {
 	int		i;
 	int		j;
 	size_t	check_numbers;
 	char	**duplicate_maps;
 
-	i = 0;
 	j = 0;
 	while (tokens[j] != NULL)
 	{
+		i = 0;
 		while (tokens[j][i] != '\0')
 			i++;
 		j++;
-		i = 0;
 	}
-	if (j < 3)
+	(void)init;
+	if (j < 3 || i < 3)
 	{
 		ft_putstr_fd("Error: map\n", 2);
+		close_program(init);
 		exit(1);
 	}
+	i = 0;
 	//j =	count_lines(tokens);
 	check_numbers = ft_strlen(tokens[i]);
-	i = 0;
 	while (i < j)
 	{
 		if (check_numbers == ft_strlen(tokens[i]))
@@ -133,6 +134,9 @@ void	check_map(char **tokens)
 		else
 		{
 			ft_putstr_fd("Error: map\n", 2);
+			free_map(tokens);
+			mlx_destroy_display(init->mlx);
+			free(init->mlx);
 			exit(1);
 		}
 	}

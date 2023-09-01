@@ -1,7 +1,5 @@
 # include "ft_so_long.h"
 
-// cmprobar que lo pintado tiene jugador monedas salida etc ACCESIBLE
-
 t_coordinates	player_position(char **tokens)
 {
 	t_coordinates	player;

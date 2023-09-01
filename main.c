@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:20:26 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/31 11:38:40 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/01 14:42:38 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 
 void	free_double_pointer(t_patata *init)
 {
@@ -27,14 +39,16 @@ void	free_double_pointer(t_patata *init)
 
 void	close_program(t_patata *init)
 {
-	mlx_destroy_image(init->mlx, init->img.pacman[0]);
+/* 	mlx_destroy_image(init->mlx, init->img.pacman[0]);
 	mlx_destroy_image(init->mlx, init->img.pacman[1]);
 	mlx_destroy_image(init->mlx, init->img.pacman[2]);
 	mlx_destroy_image(init->mlx, init->img.pacman[3]);
 	mlx_destroy_image(init->mlx, init->img.exit_portal);
 	mlx_destroy_image(init->mlx, init->img.wall);
-	mlx_destroy_image(init->mlx, init->img.colectables);
+	mlx_destroy_image(init->mlx, init->img.colectables); */
 	free_double_pointer(init);
+	mlx_destroy_display(init->mlx);
+	free(init->mlx);
 }
 
 int	close_window(t_patata *init)
@@ -51,7 +65,10 @@ int	main(int argc, char **argv)
 	init.mlx = mlx_init();
 	if (init.mlx == NULL)
 		return (1);
-	init.img.map = open_map(argc, argv);
+	(void)map_size;
+	(void)argc;
+	(void)argv;
+	init.img.map = open_map(argc, argv, &init);
 	map_size = map_lengh_high(init.img.map);
 	init.win = mlx_new_window(init.mlx, (map_size.x * 32)
 			+ 64, (map_size.y * 32) + 64, "so_long");
@@ -66,6 +83,7 @@ int	main(int argc, char **argv)
 	ft_funtion(&init);
 	mlx_loop(init.mlx);
 	close_program(&init);
-	free_double_pointer(&init);
+/* 	mlx_destroy_display(init.mlx);
+	free(init.mlx); */
 	return (0);
 }
