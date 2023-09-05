@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:40:53 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/01 14:23:22 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/04 14:22:30 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_valid_ber(char **argv)
 				check = 1;
 			i++;
 		}
-		if (check == 0)// aqui no hace falta liberar el mapa pero si liberar mlx y destroy display
+		if (check == 0)
 		{
 			ft_putstr_fd("Error: map\n", 2);
 			exit(1);
@@ -53,7 +53,7 @@ char	**open_map(int argc, char **argv, t_patata *init)
 
 	tokens = NULL;
 	j = 0;
-	if (argc != 2)// aqui no hace falta liberar el mapa pero si liberar mlx y destroy display
+	if (argc != 2)
 	{
 		ft_putstr_fd("Error: map\n", 2);
 		exit(1);

@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 10:56:03 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/31 13:21:24 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/04 13:36:29 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ int	key_hook(int key, t_patata *init)
 	printf("numero de pasos: %d\n", init->img.steps);
 	//if (key == 53)
 	if (key == 65307)
-		mlx_destroy_window(init->mlx, init->win);
+		{
+			mlx_destroy_window(init->mlx, init->win);
+			close_program(init);
+			exit(1);
+		}
+		//mlx_destroy_window(init->mlx, init->win);
 	return (0);
 }

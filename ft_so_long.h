@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/01 14:40:14 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/04 13:50:23 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_data {
 	t_coordinates	exit;
 	t_coordinates	wall_size;
 	t_coordinates	colectables_size;
+	t_coordinates	portal_size;
 }				t_data;
 
 typedef struct s_patata {
@@ -74,5 +75,6 @@ char			**open_map(int argc, char **argv, t_patata *init);
 void			close_program(t_patata *init);
 int				close_window(t_patata *init);
 void			free_map(char **map);
+void			exit_game(t_patata *data);
 
 #endif
