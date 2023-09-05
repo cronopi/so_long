@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:02:23 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/04 14:06:00 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/05 10:48:51 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	exit_game(t_patata *data)
 	}
 }
 
-void	data(t_patata *data)
+void	data(t_patata *data, t_coordinates size, int colectable_x, int colectable_y)
 {
 	if (data->img.map[size.y][size.x] == '1')
 		mlx_put_image_to_window(data->mlx, data->win,
@@ -81,7 +81,7 @@ int	print_main_caracter(t_patata *data)
 		size.x = 0;
 		while (data->img.map[size.y][size.x] != '\0')
 		{
-			//data(data);
+			//data(data, size, colectable_x, colectable_y);
 			//more_data(data);
 			if (data->img.map[size.y][size.x] == '1')
 				mlx_put_image_to_window(data->mlx, data->win,
@@ -123,15 +123,6 @@ int	print_main_caracter(t_patata *data)
 		size.y++;
 	}
 	exit_game(data);
-/* 	mlx_put_image_to_window(data->mlx, data->win,
-		data->img.pacman[data->img.direction],
-		data->img.player.x, data->img.player.y);
-	if (data->img.player_exit == 0)
-	{
-		close_window(data);
-		close_program(data);
-		exit(1);
-	} */
 	return (0);
 }
 

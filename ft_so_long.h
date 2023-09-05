@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/04 13:50:23 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/05 10:27:25 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h"
-//# include <mlx.h>
+//# include "mlx/mlx.h"
+# include <mlx.h>
 
 typedef struct s_vars {
 	void	*mlx;
@@ -76,5 +76,6 @@ void			close_program(t_patata *init);
 int				close_window(t_patata *init);
 void			free_map(char **map);
 void			exit_game(t_patata *data);
+char			**duplicate_map(char **tokens);
 
 #endif

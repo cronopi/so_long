@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_items.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:36:07 by rcastano          #+#    #+#             */
-/*   Updated: 2023/08/31 14:19:17 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/05 09:03:03 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ void	items_errors(int e, int p, int c)
 	}
 }
 
-void	check_items(char **tokens)
+void	PEC_count(char **tokens, int j, int i)
 {
-	int		i;
-	int		j;
 	char	p;
 	char	e;
 	char	c;
@@ -32,10 +30,7 @@ void	check_items(char **tokens)
 	p = 0;
 	e = 0;
 	c = 0;
-	i = 0;
-	j = 0;
-	while (tokens[i] != NULL)
-	{
+	if (tokens[i][j] != '\0')
 		while (tokens[i][j] != '\0')
 		{
 			if (tokens[i][j] == 'P')
@@ -46,14 +41,38 @@ void	check_items(char **tokens)
 				c++;
 			j++;
 		}
+	else
+		items_errors(e, p, c);
+}
+
+void	check_items(char **tokens)
+{
+	int		i;
+	int		j;
+/* 	char	p;
+	char	e;
+	char	c;
+
+	p = 0;
+	e = 0;
+	c = 0; */
+	i = 0;
+	j = 0;
+	while (tokens[i] != NULL)
+	{
+/*		while (tokens[i][j] != '\0')
+		{
+			if (tokens[i][j] == 'P')
+				p++;
+			else if (tokens[i][j] == 'E')
+				e++;
+			else if (tokens[i][j] == 'C')
+				c++;
+			j++;
+		} */
+		PEC_count(tokens, j, i);
 		i++;
 		j = 0;
 	}
-	items_errors(e, p, c);
+	//items_errors(e, p, c);
 }
-
-/*	if (E != 1 || P != 1 || C < 1)
-	{
-		perror("Error: map");
-		exit(1);
-	} */

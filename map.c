@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:40:53 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/04 14:22:30 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/05 11:06:25 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error_map(void)
 void	check_valid_ber(char **argv)
 {
 	int	i;
-	int		check;
+	int	check;
 
 	i = 0;
 	check = 0;
@@ -43,23 +43,16 @@ void	check_valid_ber(char **argv)
 	}
 }
 
-char	**open_map(int argc, char **argv, t_patata *init)
+int	fd_and_argc_check(int argc, char **argv, t_patata *init)
 {
 	int		fd;
-	char	**tokens;
-	int		i;
-	int		j;
-	char	*test;
 
-	tokens = NULL;
-	j = 0;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error: map\n", 2);
 		exit(1);
 	}
 	check_valid_ber(argv);
-	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -67,6 +60,15 @@ char	**open_map(int argc, char **argv, t_patata *init)
 		close_program(init);
 		exit(1);
 	}
+	return (fd);
+}
+
+int	i_loop(int fd)
+{
+	int		i;
+	char	*test;
+
+	i = 0;
 	while (1)
 	{
 		test = get_next_line(fd);
@@ -76,8 +78,22 @@ char	**open_map(int argc, char **argv, t_patata *init)
 			free(test);
 		}
 		else
-			break;
+			break ;
 	}
+	return (i);
+}
+
+char	**open_map(int argc, char **argv, t_patata *init)
+{
+	int		fd;
+	char	**tokens;
+	int		i;
+	int		j;
+
+	tokens = NULL;
+	j = 0;
+	fd = fd_and_argc_check(argc, argv, init);
+	i = i_loop(fd);
 	tokens = malloc(sizeof(char *) * (i + 1)); // el i + 1 es necesario?
 	if (!tokens)
 		return (0);
