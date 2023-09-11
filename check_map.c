@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:35:41 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 10:28:58 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/07 01:25:58 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ int	count_lines(char **tokens, t_patata *init)
 	}
 	if (j < 3 || i < 3)
 	{
-		ft_putstr_fd("Error: map\n", 2);
-		close_program(init);
+		ft_putstr_fd("Error\n", 1);
+		mlx_destroy_display(init->mlx);// solo funciona en linux
+		free(init->mlx);
 		exit(1);
 	}
 	i = 0;
@@ -61,9 +62,9 @@ int	count_lines(char **tokens, t_patata *init)
 
 void	else_error_map(char **tokens, t_patata *init)
 {
-	ft_putstr_fd("Error: map\n", 2);
+	ft_putstr_fd("Error\n", 1);
 	free_map(tokens);
-	//mlx_destroy_display(init->mlx); solo funciona en linux
+	mlx_destroy_display(init->mlx);// solo funciona en linux
 	free(init->mlx);
 	exit(1);
 }
@@ -74,14 +75,38 @@ void	check_map(char **tokens, t_patata *init)
 	int		j;
 	size_t	check_numbers;
 	char	**duplicate_maps;
+	unsigned int numero;
 
+	j = 0;
 	i = 0;
+
 	j = count_lines(tokens, init);
 	check_numbers = ft_strlen(tokens[i]);
+	if (tokens[i][ft_strlen(tokens[i]) - 1] == '\n')
+		check_numbers--;
 	while (i < j)
 	{
-		if (check_numbers == ft_strlen(tokens[i]))
+
+		ft_putnbr_fd(i, 2);
+		ft_putstr_fd(" ", 2);
+		numero = ft_strlen(tokens[i]);
+/* 		if (tokens[i][ft_strlen(tokens[i]) - 1] == '\n')
+		{
+			ft_putstr_fd("entra\n", 2);
+			ft_putnbr_fd(numero, 2);
+			numero--;
+		} */
+		ft_putstr_fd("comparacion", 2);
+		ft_putnbr_fd(check_numbers, 2);
+		ft_putstr_fd(" ", 2);
+		ft_putnbr_fd(numero, 2);
+		ft_putstr_fd("\n", 2);
+
+		if (check_numbers == numero)
+		//if (check_numbers == ft_strlen(tokens[i]))
+		{
 			i++;
+		}
 		else
 			else_error_map(tokens, init);
 	}

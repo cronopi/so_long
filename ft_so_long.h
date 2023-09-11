@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 10:27:25 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/05 12:59:50 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-//# include "mlx/mlx.h"
-# include <mlx.h>
+# include "mlx/mlx.h"
+//# include <mlx.h>
 
 typedef struct s_vars {
 	void	*mlx;

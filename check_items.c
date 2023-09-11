@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_items.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:36:07 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 09:03:03 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/05 13:50:50 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	items_errors(int e, int p, int c)
 {
 	if (e != 1 || p != 1 || c < 1)
 	{
-		ft_putstr_fd("Error: map\n", 2);
+		ft_putstr_fd("Error\n", 1);
 		exit(1);
 	}
 }

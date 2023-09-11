@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:20:26 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 10:49:50 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/05 13:26:16 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	close_program(t_patata *init)
 	mlx_destroy_image(init->mlx, init->img.wall);
 	mlx_destroy_image(init->mlx, init->img.colectables);
 	free_double_pointer(init);
-	//mlx_destroy_display(init->mlx); no se puede usar en macOS
+	mlx_destroy_display(init->mlx);// no se puede usar en macOS
 	free(init->mlx);
 }
 
@@ -60,10 +60,10 @@ int	close_window(t_patata *init)
 	return (0);
 }
 
-void	leaks(void)
+/* void	leaks(void)
 {
 	system("leaks -q so_long");
-}
+} */
 
 int	main(int argc, char **argv)
 {
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 	map_size = map_lengh_high(init.img.map);
 	init.win = mlx_new_window(init.mlx, (map_size.x * 32)
 			+ 64, (map_size.y * 32) + 64, "so_long");
-	atexit(leaks);
+	//atexit(leaks);
 	if (init.win == NULL)
 	{
 		free_double_pointer(&init);
