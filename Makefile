@@ -1,15 +1,15 @@
 RM = rm -f
 
 CC = gcc
-FLAGS_MLX = -Lmlx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
+FLAGS_MLX =-Lmlx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
 #FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
 #-g3 -fsanitize=address
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 LIBFT= -L libft -lft
 
 NAME = so_long
-SRC = main.c map.c check_map.c player_position.c map_lengh.c exit_position.c set_up.c key_hook.c loop_hook.c check_items.c count_colectables.c duplicate_map.c
+SRC = main.c map.c check_map.c player_position.c map_lengh.c exit_position.c set_up.c key_hook.c loop_hook.c check_items.c count_colectables.c duplicate_map.c check_accesibility.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 12:59:50 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/14 14:06:10 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int				close_window(t_patata *init);
 void			free_map(char **map);
 void			exit_game(t_patata *data);
 char			**duplicate_map(char **tokens);
+void			check_accesibility(char **duplicate, t_patata *init);
 
 #endif
