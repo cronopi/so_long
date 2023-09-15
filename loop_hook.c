@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:02:23 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/07 00:23:10 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:50:44 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int	print_main_caracter(t_patata *data)
 				data->img.map[((data->img.player.y -32) / 32)]
 				[(data->img.player.x - 32) / 32] = '0';
 				data->img.colectables_count--;
-				//ft_printf("numero de colecionables: %d\n",
-				//	data->img.colectables_count);
+				ft_printf("numero de colecionables: %d\n",
+					data->img.colectables_count);
 			}
 			if (data->img.map[((data->img.player.y -32) / 32)]
 				[(data->img.player.x - 32) / 32] == 'E'
@@ -110,7 +110,7 @@ int	print_main_caracter(t_patata *data)
 				data->img.player_exit = 0;
 				data->img.map[((data->img.player.y -32) / 32)]
 				[(data->img.player.x - 32) / 32] = '0';
-				//ft_printf("Fin de la partida!\n");
+				ft_printf("Fin de la partida!\n");
 			}
 			wall_x = wall_x + 32;
 			colectable_x = colectable_x + 32;

@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 10:56:03 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/07 00:23:45 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:46:52 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	movements_keys(int key, t_patata *init)
 int	key_hook(int key, t_patata *init)
 {
 	movements_keys(key, init);
-	//printf("numero de pasos: %d\n", init->img.steps);
+	printf("numero de pasos: %d\n", init->img.steps);
 	//if (key == 53)
 	if (key == 65307)
 	{

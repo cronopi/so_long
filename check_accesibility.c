@@ -6,28 +6,28 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:54:17 by roberto           #+#    #+#             */
-/*   Updated: 2023/09/14 14:10:49 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:34:01 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	check_accesibility(char **duplicate, t_patata *init)
+void	check_accesibility(t_patata *init)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
-	while (duplicate[y] != NULL)
+	while (init->img.duplicate_map[y] != NULL)
 	{
-		while (duplicate[y][x] != '\0')
+		while (init->img.duplicate_map[y][x] != '\0')
 		{
-			if (duplicate[y][x] == 'E' || duplicate[y][x] == 'C')
+			if (init->img.duplicate_map[y][x] == 'E' || init->img.duplicate_map[y][x] == 'C')
 			{
 				ft_putstr_fd("Error\n", 2);
 				ft_putstr_fd("es aqui?\n", 1);
-				free_map(duplicate);
+				free_map(init->img.duplicate_map);
 				//free_map(init->img.map);
 				mlx_destroy_display(init->mlx);// solo funciona en linux
 				free(init->mlx);

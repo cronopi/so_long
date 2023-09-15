@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:40:53 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/14 14:17:19 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:47:54 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ char	**open_map(int argc, char **argv, t_patata *init)
 	while (j < i)
 	{
 		init->img.map[j] = get_next_line(fd);
-		//ft_putstr_fd(init->img.map[j], 2);
 		j++;
 	}
 	init->img.map[j] = NULL;
@@ -123,7 +122,7 @@ char	**open_map(int argc, char **argv, t_patata *init)
 			exit(1);
 		}
 	close(fd);
-	check_map(init->img.map, init);
+	check_map(init);
 	map_lengh_high(init->img.map);
 	return (init->img.map);
 }

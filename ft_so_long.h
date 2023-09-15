@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/14 14:06:10 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:34:20 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_data {
 	void			*colectables;
 	int				line_length;
 	char			**map;
+	char			**duplicate_map;
 	int				colectables_count;
 	int				player_exit;
 	t_coordinates	end_game_size;
@@ -62,21 +63,21 @@ typedef struct s_patata {
 	void			*win;
 }				t_patata;
 
-t_coordinates	exit_position(char **tokens);
-t_coordinates	player_position(char **tokens);
+t_coordinates	exit_position(t_patata *init);
+t_coordinates	player_position(t_patata *init);
 t_coordinates	map_lengh_high(char **map);
-int				count_colectables(char **tokens, t_patata *data);
-void			check_items(char **tokens);
+int				count_colectables(t_patata *data);
+void			check_items(t_patata *init);
 void			ft_funtion(t_patata *data);
 int				key_hook(int key, t_patata *init);
 void			set_up(t_patata *patata);
-void			check_map(char **tokens, t_patata *init);
+void			check_map(t_patata *init);
 char			**open_map(int argc, char **argv, t_patata *init);
 void			close_program(t_patata *init);
 int				close_window(t_patata *init);
 void			free_map(char **map);
 void			exit_game(t_patata *data);
-char			**duplicate_map(char **tokens);
-void			check_accesibility(char **duplicate, t_patata *init);
+char			**duplicate_map(t_patata *init);
+void			check_accesibility(t_patata *init);
 
 #endif

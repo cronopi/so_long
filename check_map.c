@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:35:41 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/14 14:03:07 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:45:50 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,38 +20,38 @@ void free_leaks(char **duplicate)
 	exit(1);
 }
 
-void	check_walls_floodfill(char **duplicate)
+void	check_walls_floodfill(t_patata *init)
 {
 	t_coordinates	coords;
 
 	coords.x = 0;
 	coords.y = 0;
-	while (duplicate[coords.y] != NULL)
+	while (init->img.duplicate_map[coords.y] != NULL)
 	{
-		if (duplicate[coords.y][coords.x] == 'v')
-			free_leaks(duplicate);
+		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
+			free_leaks(init->img.duplicate_map);
 		coords.y++;
 	}
 	coords.y = coords.y - 1;
-	while (duplicate[coords.y][coords.x] != '\0')
+	while (init->img.duplicate_map[coords.y][coords.x] != '\0')
 	{
-		if (duplicate[coords.y][coords.x] == 'v')
-			free_leaks(duplicate);
+		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
+			free_leaks(init->img.duplicate_map);
 		coords.x++;
 	}
 	coords.x = coords.x - 1;
 	while (coords.y >= 0)
 	{
-		if (duplicate[coords.y][coords.x] == 'v')
-			free_leaks(duplicate);
+		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
+			free_leaks(init->img.duplicate_map);
 		coords.y--;
 	}
 	coords.y = 0;
 	coords.x = 0;
-	while (duplicate[coords.y][coords.x] != '\0')
+	while (init->img.duplicate_map[coords.y][coords.x] != '\0')
 	{
-		if (duplicate[coords.y][coords.x] == 'v')
-			free_leaks(duplicate);
+		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
+			free_leaks(init->img.duplicate_map);
 		coords.x++;
 	}
 }
@@ -94,36 +94,36 @@ void	floodfill(char **duplicate, int x, int y)
 		floodfill(duplicate, x - 1, y);
 }
 
-void	check_floors(char **duplicate, t_patata *init)
+void	check_floors(t_patata *init)
 {
 	t_coordinates	player;
 
-	player = player_position(duplicate);
-	floodfill_duplicate(duplicate, player.x, player.y);
-	check_walls_floodfill(duplicate);
-	//free_map(duplicate);
-	floodfill(duplicate, player.x, player.y);
-	check_accesibility(duplicate, init);
+	player = player_position(init);
+	floodfill_duplicate(init->img.duplicate_map, player.x, player.y);
+	check_walls_floodfill(init);
+	//free_map(init->img.duplicate_map);
+	floodfill(init->img.duplicate_map, player.x, player.y);
+	check_accesibility(init);
 	int i = 0;
-	while (duplicate[i] != NULL)
+	while (init->img.duplicate_map[i] != NULL)
 	{
-		printf("%s\n", duplicate[i]);
+		printf("%s\n", init->img.duplicate_map[i]);
 		i++;
 	}
 
 }
 
-int	count_lines(char **tokens, t_patata *init)
+int	count_lines(t_patata *init)
 {
 	int	i;
 	int	j;
 
 	j = 0;
 	i = 0;
-	while (tokens[j] != NULL)
+	while (init->img.map[j] != NULL)
 	{
 		i = 0;
-		while (tokens[j][i] != '\0')
+		while (init->img.map[j][i] != '\0')
 			i++;
 		j++;
 	}
@@ -131,7 +131,7 @@ int	count_lines(char **tokens, t_patata *init)
 	{
 		ft_putstr_fd("Error\n", 1);
 		ft_putstr_fd("3\n", 1);
-		free_map(tokens);
+		free_map(init->img.map);
 		mlx_destroy_display(init->mlx);// solo funciona en linux
 		free(init->mlx);
 		exit(1);
@@ -140,70 +140,54 @@ int	count_lines(char **tokens, t_patata *init)
 	return (j);
 }
 
-void	else_error_map(char **tokens, t_patata *init)
+void	else_error_map(t_patata *init)
 {
 	ft_putstr_fd("Error\n", 1);
 	ft_putstr_fd("2\n", 1);
-	free_map(tokens);
+	free_map(init->img.map);
 	mlx_destroy_display(init->mlx);// solo funciona en linux
 	free(init->mlx);
 	exit(1);
 }
 
-void	check_map(char **tokens, t_patata *init)
+void	check_map(t_patata *init)
 {
 	int		i;
 	int		j;
 	size_t	check_numbers;
-	char	**duplicate_maps;
 	unsigned int numero;
 
 	i = 0;
-	j = count_lines(tokens, init);
-	check_numbers = ft_strlen(tokens[i]);
-	if (tokens[i][ft_strlen(tokens[i]) - 1] == '\n')
+	j = count_lines(init);
+	check_numbers = ft_strlen(init->img.map[i]);
+	if (init->img.map[i][ft_strlen(init->img.map[i]) - 1] == '\n')
 	{
 		check_numbers--;
-		if (tokens[i][ft_strlen(tokens[i]) - 2] == '\r')
+		if (init->img.map[i][ft_strlen(init->img.map[i]) - 2] == '\r')
 			check_numbers--;
 	}
 	while (i < j)
 	{
-		//ft_putstr_fd("notrectangularlast\n", 2);
-		numero = ft_strlen(tokens[i]);
-		if (tokens[i][ft_strlen(tokens[i]) - 1] == '\n')
+		numero = ft_strlen(init->img.map[i]);
+		if (init->img.map[i][ft_strlen(init->img.map[i]) - 1] == '\n')
 		{
-			/* ft_putstr_fd("entra ", 2);
-			ft_putnbr_fd(numero, 2); */
 			numero--;
-			//ft_putstr_fd("\n", 2);
-		if (tokens[i][ft_strlen(tokens[i]) - 2] == '\r')
-			numero--;
+			if (init->img.map[i][ft_strlen(init->img.map[i]) - 2] == '\r')
+				numero--;
 		}
-/* 		ft_putstr_fd("comparacion", 2);
-		ft_putnbr_fd(i, 2);
-		ft_putstr_fd(" ", 2);
-		ft_putnbr_fd(check_numbers, 2);
-		ft_putstr_fd(" ", 2);
-		ft_putnbr_fd(numero, 2);
-		ft_putstr_fd("\n", 2); */
-
-		//if (check_numbers == ft_strlen(tokens[i]))
 		if (check_numbers == numero)
-		{
 			i++;
-		}
 		else
-			else_error_map(tokens, init);
+			else_error_map(init);
 	}
 	i = 0;
-	duplicate_maps = duplicate_map(tokens);
-	check_items(duplicate_maps);
-	check_floors(duplicate_maps, init);
-	while (duplicate_maps[i] != NULL)
+	init->img.duplicate_map = duplicate_map(init);
+	check_items(init);
+	check_floors(init);
+	while (init->img.duplicate_map[i] != NULL)
 	{
-		free(duplicate_maps[i]);
+		free(init->img.duplicate_map[i]);
 		i++;
 	}
-	free(duplicate_maps);
+	free(init->img.duplicate_map);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:07:45 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 11:14:33 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/15 09:28:29 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	set_up(t_patata *patata)
 	patata->img.direction = 0;
 	patata->img.player_exit = 1;
 	patata->img.steps = 0;
-	patata->img.colectables_count = count_colectables(patata->img.map, patata);
-	patata->img.exit = exit_position(patata->img.map);
-	patata->img.player = player_position(patata->img.map);
+	patata->img.colectables_count = count_colectables(patata);
+	patata->img.exit = exit_position(patata);
+	patata->img.player = player_position(patata);
 	patata->img.exit.x = (patata->img.exit.x * 32) + 32;
 	patata->img.exit.y = (patata->img.exit.y * 32) + 32;
 	patata->img.player.x = (patata->img.player.x * 32) + 32;

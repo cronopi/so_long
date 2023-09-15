@@ -6,25 +6,25 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:36:07 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/12 13:22:54 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:49:41 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	items_errors(int e, int p, int c, char **tokens)
+void	items_errors(int e, int p, int c, t_patata *init)
 {
 	if (e != 1 || p != 1 || c < 1)
 	{
 		ft_putstr_fd("Error\n", 1);
-		free_map(tokens);
+		free_map(init->img.duplicate_map);
 		//mlx_destroy_display(init->mlx);// solo funciona en linux
 		//free(init->mlx);
 		exit(1);
 	}
 }
 
-void	PEC_count(char **tokens, int j, int i)
+/* void	PEC_count(t_patata *init)
 {
 	char	p;
 	char	e;
@@ -33,24 +33,10 @@ void	PEC_count(char **tokens, int j, int i)
 	p = 0;
 	e = 0;
 	c = 0;
-	if (tokens[i][j] != '\0')
-		while (tokens[i][j] != '\0')
-		{
-			if (tokens[i][j] == 'P')
-				p++;
-			else if (tokens[i][j] == 'E')
-				e++;
-			else if (tokens[i][j] == 'C')
-				c++;
-			else if (tokens[i][j] != '1' && tokens[i][j] != '0')
-				items_errors(e, 0, c, tokens);// exit con liberacion
-			j++;
-		}
-	else
-		items_errors(e, p, c, tokens);
-}
 
-void	check_items(char **tokens)
+} */
+
+void	check_items(t_patata *init)
 {
 	int		i;
 	int		j;
@@ -63,26 +49,26 @@ void	check_items(char **tokens)
 	c = 0;
 	i = 0;
 	j = 0;
-	while (tokens[i] != NULL)
+	while (init->img.duplicate_map[i] != NULL)
 	{
-		while (tokens[i][j] != '\0')
+		while (init->img.duplicate_map[i][j] != '\0')
 		{
-			if (tokens[i][j] == 'P')
+			if (init->img.duplicate_map[i][j] == 'P')
 				p++;
-			else if (tokens[i][j] == 'E')
+			else if (init->img.duplicate_map[i][j] == 'E')
 				e++;
-			else if (tokens[i][j] == 'C')
+			else if (init->img.duplicate_map[i][j] == 'C')
 				c++;
-			else if (tokens[i][j] != '1' && tokens[i][j] != '0' && tokens[i][j] != '\r' && tokens[i][j] != '\n')
+			else if (init->img.duplicate_map[i][j] != '1' && init->img.duplicate_map[i][j] != '0' && init->img.duplicate_map[i][j] != '\r' && init->img.duplicate_map[i][j] != '\n')
 			{
 				ft_putstr_fd("Entras o no?\n", 1);
-				items_errors(e, 0, c, tokens);// exit con liberacion
+				items_errors(e, 0, c, init);// exit con liberacion
 			}
 			j++;
 		}
-		//PEC_count(tokens, j, i);
+		//PEC_count(init->img.duplicate_map, j, i);
 		i++;
 		j = 0;
 	}
-	items_errors(e, p, c, tokens);
+	items_errors(e, p, c, init);
 }

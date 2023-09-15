@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   duplicate_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:00:59 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 10:29:53 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/15 08:39:42 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-char	**duplicate_map(char **tokens)
+char	**duplicate_map(t_patata *init)
 {
 	int		y;
 	int		x;
@@ -20,9 +20,9 @@ char	**duplicate_map(char **tokens)
 
 	x = 0;
 	y = 0;
-	while (tokens[y] != NULL)
+	while (init->img.map[y] != NULL)
 	{
-		while (tokens[y][x] != '\0')
+		while (init->img.map[y][x] != '\0')
 			x++;
 		y++;
 		x = 0;
@@ -34,7 +34,7 @@ char	**duplicate_map(char **tokens)
 	while (y != 0)
 	{
 		y--;
-		duplicate[y] = ft_strdup(tokens[y]);
+		duplicate[y] = ft_strdup(init->img.map[y]);
 	}
 	return (duplicate);
 }
