@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:06:57 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 09:26:58 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-t_coordinates	player_position(t_patata *init)
+t_coordinates	player_position(t_data_global *init)
 {
 	t_coordinates	player;
 

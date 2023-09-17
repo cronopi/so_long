@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 10:34:20 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:18:12 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 //# include <mlx.h>
-
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
 
 typedef struct s_coordinates
 {
@@ -61,23 +56,23 @@ typedef struct s_patata {
 	t_data			img;
 	void			*mlx;
 	void			*win;
-}				t_patata;
+}				t_data_global;
 
-t_coordinates	exit_position(t_patata *init);
-t_coordinates	player_position(t_patata *init);
+t_coordinates	exit_position(t_data_global *init);
+t_coordinates	player_position(t_data_global *init);
 t_coordinates	map_lengh_high(char **map);
-int				count_colectables(t_patata *data);
-void			check_items(t_patata *init);
-void			ft_funtion(t_patata *data);
-int				key_hook(int key, t_patata *init);
-void			set_up(t_patata *patata);
-void			check_map(t_patata *init);
-char			**open_map(int argc, char **argv, t_patata *init);
-void			close_program(t_patata *init);
-int				close_window(t_patata *init);
+int				count_colectables(t_data_global *data);
+void			check_items(t_data_global *init);
+void			ft_funtion(t_data_global *data);
+int				key_hook(int key, t_data_global *init);
+void			set_up(t_data_global *patata);
+void			check_map(t_data_global *init);
+char			**open_map(int argc, char **argv, t_data_global *init);
+void			close_program(t_data_global *init);
+int				close_window(t_data_global *init);
 void			free_map(char **map);
-void			exit_game(t_patata *data);
-char			**duplicate_map(t_patata *init);
-void			check_accesibility(t_patata *init);
+void			exit_game(t_data_global *data);
+char			**duplicate_map(t_data_global *init);
+void			check_accesibility(t_data_global *init);
 
 #endif

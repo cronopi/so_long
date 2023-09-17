@@ -6,21 +6,23 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:35:41 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 10:45:50 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 14:09:10 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void free_leaks(char **duplicate)
+void free_leaks(t_data_global *init)
 {
 	ft_putstr_fd("Error\n", 1);
-	(void)duplicate;
-	//free_map(duplicate);
+	free_map(init->img.duplicate_map);
+	free_map(init->img.map);
+	mlx_destroy_display(init->mlx);
+	free(init->mlx);
 	exit(1);
 }
 
-void	check_walls_floodfill(t_patata *init)
+void	check_walls_floodfill(t_data_global *init)
 {
 	t_coordinates	coords;
 
@@ -29,21 +31,21 @@ void	check_walls_floodfill(t_patata *init)
 	while (init->img.duplicate_map[coords.y] != NULL)
 	{
 		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
-			free_leaks(init->img.duplicate_map);
+			free_leaks(init);
 		coords.y++;
 	}
 	coords.y = coords.y - 1;
 	while (init->img.duplicate_map[coords.y][coords.x] != '\0')
 	{
 		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
-			free_leaks(init->img.duplicate_map);
+			free_leaks(init);
 		coords.x++;
 	}
 	coords.x = coords.x - 1;
 	while (coords.y >= 0)
 	{
 		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
-			free_leaks(init->img.duplicate_map);
+			free_leaks(init);
 		coords.y--;
 	}
 	coords.y = 0;
@@ -51,7 +53,7 @@ void	check_walls_floodfill(t_patata *init)
 	while (init->img.duplicate_map[coords.y][coords.x] != '\0')
 	{
 		if (init->img.duplicate_map[coords.y][coords.x] == 'v')
-			free_leaks(init->img.duplicate_map);
+			free_leaks(init);
 		coords.x++;
 	}
 }
@@ -94,16 +96,15 @@ void	floodfill(char **duplicate, int x, int y)
 		floodfill(duplicate, x - 1, y);
 }
 
-void	check_floors(t_patata *init)
+void	check_floors(t_data_global *init)
 {
 	t_coordinates	player;
 
 	player = player_position(init);
-	floodfill_duplicate(init->img.duplicate_map, player.x, player.y);
-	check_walls_floodfill(init);
-	//free_map(init->img.duplicate_map);
 	floodfill(init->img.duplicate_map, player.x, player.y);
 	check_accesibility(init);
+	floodfill_duplicate(init->img.duplicate_map, player.x, player.y);
+	check_walls_floodfill(init);
 	int i = 0;
 	while (init->img.duplicate_map[i] != NULL)
 	{
@@ -113,7 +114,7 @@ void	check_floors(t_patata *init)
 
 }
 
-int	count_lines(t_patata *init)
+int	count_lines(t_data_global *init)
 {
 	int	i;
 	int	j;
@@ -129,6 +130,7 @@ int	count_lines(t_patata *init)
 	}
 	if (j < 3 || i < 3)
 	{
+		ft_putstr_fd("wgererggwq\n", 1);
 		ft_putstr_fd("Error\n", 1);
 		ft_putstr_fd("3\n", 1);
 		free_map(init->img.map);
@@ -140,7 +142,7 @@ int	count_lines(t_patata *init)
 	return (j);
 }
 
-void	else_error_map(t_patata *init)
+void	else_error_map(t_data_global *init)
 {
 	ft_putstr_fd("Error\n", 1);
 	ft_putstr_fd("2\n", 1);
@@ -150,7 +152,7 @@ void	else_error_map(t_patata *init)
 	exit(1);
 }
 
-void	check_map(t_patata *init)
+void	check_map(t_data_global *init)
 {
 	int		i;
 	int		j;

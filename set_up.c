@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:07:45 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 09:28:29 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	set_up(t_patata *patata)
+void	set_up(t_data_global *patata)
 {
 	patata->img.direction = 0;
 	patata->img.player_exit = 1;

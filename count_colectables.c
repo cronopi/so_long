@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 10:51:50 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 08:45:32 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-int	count_colectables(t_patata *data)
+int	count_colectables(t_data_global *data)
 {
 	int		i;
 	int		j;

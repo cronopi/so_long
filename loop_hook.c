@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:02:23 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 10:50:44 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	exit_game(t_patata *data)
+void	exit_game(t_data_global *data)
 {
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->img.pacman[data->img.direction],
@@ -25,7 +25,7 @@ void	exit_game(t_patata *data)
 	}
 }
 
-/* void	more_data(t_patata *data)
+/* void	more_data(t_data_global *data)
 {
 	if (data->img.map[((data->img.player.y -32) / 32)]
 		[(data->img.player.x - 32) / 32] == 'C')
@@ -47,7 +47,7 @@ void	exit_game(t_patata *data)
 	}
 }
 
-void	data(t_patata *data, t_coordinates size, int colectable_x, int colectable_y)
+void	data(t_data_global *data, t_coordinates size, int colectable_x, int colectable_y)
 {
 	if (data->img.map[size.y][size.x] == '1')
 		mlx_put_image_to_window(data->mlx, data->win,
@@ -62,7 +62,7 @@ void	data(t_patata *data, t_coordinates size, int colectable_x, int colectable_y
 			data->img.exit_portal, 32 + wall_x, 32 + wall_y);
 } */
 
-int	print_main_caracter(t_patata *data)
+int	print_main_caracter(t_data_global *data)
 {
 	t_coordinates	size;
 	int				colectable_x;
@@ -126,7 +126,7 @@ int	print_main_caracter(t_patata *data)
 	return (0);
 }
 
-void	ft_funtion(t_patata *data)
+void	ft_funtion(t_data_global *data)
 {
 	mlx_loop_hook(data->mlx, print_main_caracter, data);
 	mlx_loop(data->mlx);

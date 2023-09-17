@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:20:26 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/05 13:26:16 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_map(char **map)
 	free(map);
 }
 
-void	free_double_pointer(t_patata *init)
+void	free_double_pointer(t_data_global *init)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ void	free_double_pointer(t_patata *init)
 	free(init->img.map);
 }
 
-void	close_program(t_patata *init)
+void	close_program(t_data_global *init)
 {
 	mlx_destroy_image(init->mlx, init->img.pacman[0]);
 	mlx_destroy_image(init->mlx, init->img.pacman[1]);
@@ -52,7 +52,7 @@ void	close_program(t_patata *init)
 	free(init->mlx);
 }
 
-int	close_window(t_patata *init)
+int	close_window(t_data_global *init)
 {
 	mlx_destroy_window(init->mlx, init->win);
 	close_program(init);
@@ -68,7 +68,7 @@ int	close_window(t_patata *init)
 int	main(int argc, char **argv)
 {
 	t_coordinates	map_size;
-	t_patata		init;
+	t_data_global		init;
 
 	init.mlx = mlx_init();
 	if (init.mlx == NULL)

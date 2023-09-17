@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:54:17 by roberto           #+#    #+#             */
-/*   Updated: 2023/09/15 10:34:01 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:53:57 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	check_accesibility(t_patata *init)
+void	check_accesibility(t_data_global *init)
 {
 	int x;
 	int y;
@@ -28,7 +28,7 @@ void	check_accesibility(t_patata *init)
 				ft_putstr_fd("Error\n", 2);
 				ft_putstr_fd("es aqui?\n", 1);
 				free_map(init->img.duplicate_map);
-				//free_map(init->img.map);
+				free_map(init->img.map);
 				mlx_destroy_display(init->mlx);// solo funciona en linux
 				free(init->mlx);
 				exit(1);

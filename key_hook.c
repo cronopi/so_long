@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 10:56:03 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 10:46:52 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	more_movements_keys(int key, t_patata *init)
+void	more_movements_keys(int key, t_data_global *init)
 {
 	//if (key == 1)
 	if (key == 65364)
@@ -38,7 +38,7 @@ void	more_movements_keys(int key, t_patata *init)
 	}
 }
 
-void	movements_keys(int key, t_patata *init)
+void	movements_keys(int key, t_data_global *init)
 {
 	if (init->img.player_exit == 1)
 	{
@@ -68,7 +68,7 @@ void	movements_keys(int key, t_patata *init)
 	}
 }
 
-int	key_hook(int key, t_patata *init)
+int	key_hook(int key, t_data_global *init)
 {
 	movements_keys(key, init);
 	printf("numero de pasos: %d\n", init->img.steps);

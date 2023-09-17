@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:40:53 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 10:47:54 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_valid_ber(char **argv)
 	}
 }
 
-int	fd_and_argc_check(int argc, char **argv, t_patata *init)
+int	fd_and_argc_check(int argc, char **argv, t_data_global *init)
 {
 	int		fd;
 
@@ -91,7 +91,7 @@ int	i_loop(int fd)
 	return (i);
 }
 
-char	**open_map(int argc, char **argv, t_patata *init)
+char	**open_map(int argc, char **argv, t_data_global *init)
 {
 	int		fd;
 	int		i;

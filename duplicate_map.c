@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:00:59 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 08:39:42 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-char	**duplicate_map(t_patata *init)
+char	**duplicate_map(t_data_global *init)
 {
 	int		y;
 	int		x;
