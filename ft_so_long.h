@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 13:18:12 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/18 11:15:56 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,10 @@ void			free_map(char **map);
 void			exit_game(t_data_global *data);
 char			**duplicate_map(t_data_global *init);
 void			check_accesibility(t_data_global *init);
+void			floodfill(char **duplicate, int x, int y);
+void			floodfill_duplicate(char **duplicate, int x, int y);
+void			check_walls_floodfill(t_data_global *init);
+void			free_map(char **map);
+void			free_double_pointer(t_data_global *init);
 
 #endif

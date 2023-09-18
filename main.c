@@ -6,37 +6,11 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:20:26 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/18 11:16:13 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
-
-void	free_double_pointer(t_data_global *init)
-{
-	int	i;
-
-	i = 0;
-	while (init->img.map[i] != NULL)
-	{
-		free(init->img.map[i]);
-		i++;
-	}
-	free(init->img.map);
-}
 
 void	close_program(t_data_global *init)
 {
@@ -68,7 +42,7 @@ int	close_window(t_data_global *init)
 int	main(int argc, char **argv)
 {
 	t_coordinates	map_size;
-	t_data_global		init;
+	t_data_global	init;
 
 	init.mlx = mlx_init();
 	if (init.mlx == NULL)
@@ -88,7 +62,6 @@ int	main(int argc, char **argv)
 	mlx_hook(init.win, 17, 1L << 17, close_window, &init);
 	ft_funtion(&init);
 	mlx_loop(init.mlx);
-	//close_window(&init); // solo para comprobar leaks
 	close_program(&init);
 	return (0);
 }

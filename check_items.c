@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:36:07 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 13:57:38 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/18 13:59:58 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,48 +25,43 @@ void	items_errors(int e, int p, int c, t_data_global *init)
 	}
 }
 
-/* void	PEC_count(t_data_global *init)
+void	pec_count(t_data_global *init, int *e, int *c, t_coordinates coords)
 {
-	char	p;
-	char	e;
-	char	c;
-
-	p = 0;
-	e = 0;
-	c = 0;
-
-} */
+	if (init->img.duplicate_map[coords.x][coords.y] == 'E')
+		(*e)++;
+	else if (init->img.duplicate_map[coords.x][coords.y] == 'C')
+		(*c)++;
+	else if (init->img.duplicate_map[coords.x][coords.y] != '1'
+		&& init->img.duplicate_map[coords.x][coords.y] != '0'
+		&& init->img.duplicate_map[coords.x][coords.y] != '\r'
+		&& init->img.duplicate_map[coords.x][coords.y] != '\n')
+		items_errors(0, 0, 0, init);
+}
 
 void	check_items(t_data_global *init)
 {
-	int		i;
-	int		j;
-	char	p;
-	char	e;
-	char	c;
+	t_coordinates	coords;
+	int				p;
+	int				e;
+	int				c;
 
 	p = 0;
 	e = 0;
 	c = 0;
-	i = 0;
-	j = 0;
-	while (init->img.duplicate_map[i] != NULL)
+	coords.x = 0;
+	coords.y = 0;
+	while (init->img.duplicate_map[coords.x] != NULL)
 	{
-		while (init->img.duplicate_map[i][j] != '\0')
+		while (init->img.duplicate_map[coords.x][coords.y] != '\0')
 		{
-			if (init->img.duplicate_map[i][j] == 'P')
+			if (init->img.duplicate_map[coords.x][coords.y] == 'P')
 				p++;
-			else if (init->img.duplicate_map[i][j] == 'E')
-				e++;
-			else if (init->img.duplicate_map[i][j] == 'C')
-				c++;
-			else if (init->img.duplicate_map[i][j] != '1' && init->img.duplicate_map[i][j] != '0' && init->img.duplicate_map[i][j] != '\r' && init->img.duplicate_map[i][j] != '\n')
-				items_errors(e, 0, c, init);// exit con liberacion
-			j++;
+			else
+				pec_count(init, &e, &c, coords);
+			coords.y++;
 		}
-		//PEC_count(init->img.duplicate_map, j, i);
-		i++;
-		j = 0;
+		coords.x++;
+		coords.y = 0;
 	}
 	items_errors(e, p, c, init);
 }

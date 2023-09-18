@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:02:23 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/15 13:14:47 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/18 14:05:50 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	exit_game(t_data_global *data)
 	}
 }
 
-/* void	more_data(t_data_global *data)
+void	more_data(t_data_global *data)
 {
 	if (data->img.map[((data->img.player.y -32) / 32)]
 		[(data->img.player.x - 32) / 32] == 'C')
@@ -47,33 +47,30 @@ void	exit_game(t_data_global *data)
 	}
 }
 
-void	data(t_data_global *data, t_coordinates size, int colectable_x, int colectable_y)
+void	data1(t_data_global *data, t_coordinates size,
+	t_coordinates colectable, t_coordinates wall)
 {
 	if (data->img.map[size.y][size.x] == '1')
 		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.wall, 32 + wall_x, 32 + wall_y);
+			data->img.wall, 32 + wall.x, 32 + wall.y);
 	if (data->img.map[size.y][size.x] == 'C')
 		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.colectables, 32 + colectable_x,
-			32 + colectable_y);
+			data->img.colectables, 32 + colectable.x,
+			32 + colectable.y);
 	if (data->img.map[size.y][size.x] == 'E'
 		&& data->img.colectables_count == 0)
 		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.exit_portal, 32 + wall_x, 32 + wall_y);
-} */
+			data->img.exit_portal, 32 + wall.x, 32 + wall.y);
+	more_data(data);
+}
 
 int	print_main_caracter(t_data_global *data)
 {
 	t_coordinates	size;
-	int				colectable_x;
-	int				colectable_y;
-	int				wall_x;
-	int				wall_y;
+	t_coordinates	colectable;
+	t_coordinates	wall;
 
-	wall_x = 0;
-	wall_y = 0;
-	colectable_x = 0;
-	colectable_y = 0;
+	ft_memset(&colectable, 0, 2 * sizeof(t_coordinates));
 	mlx_clear_window(data->mlx, data->win);
 	size.y = 0;
 	while (data->img.map[size.y] != NULL)
@@ -81,45 +78,15 @@ int	print_main_caracter(t_data_global *data)
 		size.x = 0;
 		while (data->img.map[size.y][size.x] != '\0')
 		{
-			//data(data, size, colectable_x, colectable_y);
-			//more_data(data);
-			if (data->img.map[size.y][size.x] == '1')
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img.wall, 32 + wall_x, 32 + wall_y);
-			if (data->img.map[size.y][size.x] == 'C')
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img.colectables, 32 + colectable_x,
-					32 + colectable_y);
-			if (data->img.map[size.y][size.x] == 'E'
-				&& data->img.colectables_count == 0)
-				mlx_put_image_to_window(data->mlx, data->win,
-					data->img.exit_portal, 32 + wall_x, 32 + wall_y);
-			if (data->img.map[((data->img.player.y -32) / 32)]
-				[(data->img.player.x - 32) / 32] == 'C')
-			{
-				data->img.map[((data->img.player.y -32) / 32)]
-				[(data->img.player.x - 32) / 32] = '0';
-				data->img.colectables_count--;
-				ft_printf("numero de colecionables: %d\n",
-					data->img.colectables_count);
-			}
-			if (data->img.map[((data->img.player.y -32) / 32)]
-				[(data->img.player.x - 32) / 32] == 'E'
-				&& data->img.colectables_count == 0)
-			{
-				data->img.player_exit = 0;
-				data->img.map[((data->img.player.y -32) / 32)]
-				[(data->img.player.x - 32) / 32] = '0';
-				ft_printf("Fin de la partida!\n");
-			}
-			wall_x = wall_x + 32;
-			colectable_x = colectable_x + 32;
+			data1(data, size, colectable, wall);
+			wall.x = wall.x + 32;
+			colectable.x = colectable.x + 32;
 			size.x++;
 		}
-		colectable_y = colectable_y + 32;
-		colectable_x = 0;
-		wall_y = wall_y + 32;
-		wall_x = 0;
+		colectable.y = colectable.y + 32;
+		colectable.x = 0;
+		wall.y = wall.y + 32;
+		wall.x = 0;
 		size.y++;
 	}
 	exit_game(data);
