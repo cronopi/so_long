@@ -1,0 +1,2 @@
+el gnl no se tiene que liberar también en el break?
+los open fd no tienen fd < 0

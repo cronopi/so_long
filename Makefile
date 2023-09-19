@@ -1,8 +1,8 @@
 RM = rm -f
 
 CC = gcc
-FLAGS_MLX =-Lmlx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
-#FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
+#FLAGS_MLX =-Lmlx -lmlx_Linux -Llibft -lft -lXext -lX11 -lm -lz
+FLAGS_MLX = -lmlx -framework OpenGL -framework AppKit
 #-g3 -fsanitize=address
 FLAGS = -Wall -Wextra -Werror -g
 
@@ -13,11 +13,11 @@ SRC = main.c map.c check_map.c player_position.c map_lengh.c exit_position.c set
 
 OBJ = $(SRC:.c=.o)
 
-%.o: %.c
-	$(CC) $(FLAGS) $(FLAGS_MLX) -c -o $@ $<
-
 #%.o: %.c
-#	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+#	$(CC) $(FLAGS) $(FLAGS_MLX) -c -o $@ $<
+
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 all: $(NAME)
 

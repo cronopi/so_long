@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:40:53 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/18 13:12:56 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/19 08:36:02 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_valid_ber(char **argv, t_data_global *init)
 		if (check == 0)
 		{
 			ft_putstr_fd("Error\n", 1);
-			mlx_destroy_display(init->mlx);// no se puede usar en macOS
+			//mlx_destroy_display(init->mlx);// no se puede usar en macOS
 			free(init->mlx);
 			exit(1);
 		}
@@ -46,7 +46,7 @@ int	fd_and_argc_check(int argc, char **argv, t_data_global *init)
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\n", 1);
-		mlx_destroy_display(init->mlx);// no se puede usar en macOS
+		//mlx_destroy_display(init->mlx);// no se puede usar en macOS
 		free(init->mlx);
 		exit(1);
 	}
@@ -55,7 +55,7 @@ int	fd_and_argc_check(int argc, char **argv, t_data_global *init)
 	if (fd < 0)
 	{
 		ft_putstr_fd("Error\n", 1);
-		mlx_destroy_display(init->mlx);// no se puede usar en macOS
+		//mlx_destroy_display(init->mlx);// no se puede usar en macOS
 		free(init->mlx);
 		exit(1);
 	}
@@ -77,7 +77,9 @@ int	i_loop(int fd)
 			free(test);
 		}
 		else
+		{
 			break ;
+		}
 	}
 	return (i);
 }
@@ -88,7 +90,7 @@ void	line_leap(t_data_global *init, int j)
 	{
 		ft_putstr_fd("Error\n", 1);
 		free_map(init->img.map);
-		mlx_destroy_display(init->mlx);// solo funciona en linux
+		//mlx_destroy_display(init->mlx);// solo funciona en linux
 		free(init->mlx);
 		exit(1);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_accesibility.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:54:17 by roberto           #+#    #+#             */
-/*   Updated: 2023/09/18 09:47:20 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/19 09:18:51 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_accesibility(t_data_global *init)
 				ft_putstr_fd("Error\n", 2);
 				free_map(init->img.duplicate_map);
 				free_map(init->img.map);
-				mlx_destroy_display(init->mlx);// solo funciona en linux
+				//mlx_destroy_display(init->mlx);// solo funciona en linux
 				free(init->mlx);
 				exit(1);
 			}

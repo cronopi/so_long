@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 09:01:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/18 11:15:56 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/19 10:23:06 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h"
-//# include <mlx.h>
+//# include "mlx/mlx.h"
+# include <mlx.h>
 
 typedef struct s_coordinates
 {

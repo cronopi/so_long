@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfill_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:12:24 by roberto           #+#    #+#             */
-/*   Updated: 2023/09/18 10:20:10 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/19 09:19:28 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_leaks(t_data_global *init)
 	ft_putstr_fd("Error\n", 1);
 	free_map(init->img.duplicate_map);
 	free_map(init->img.map);
-	mlx_destroy_display(init->mlx);
+	//mlx_destroy_display(init->mlx);
 	free(init->mlx);
 	exit(1);
 }

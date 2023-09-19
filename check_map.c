@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 08:35:41 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/18 13:56:02 by roberto          ###   ########.fr       */
+/*   Updated: 2023/09/19 09:19:16 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_floors(t_data_global *init)
 	check_walls_floodfill(init);
 	while (init->img.duplicate_map[i] != NULL)
 	{
-		printf("%s\n", init->img.duplicate_map[i]);
+		//printf("%s\n", init->img.duplicate_map[i]);
 		i++;
 	}
 }
@@ -43,9 +43,8 @@ int	count_lines(t_data_global *init)
 void	else_error_map(t_data_global *init)
 {
 	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd("2\n", 1);
 	free_map(init->img.map);
-	mlx_destroy_display(init->mlx);// solo funciona en linux
+	//mlx_destroy_display(init->mlx);// solo funciona en linux
 	free(init->mlx);
 	exit(1);
 }
