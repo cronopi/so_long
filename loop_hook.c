@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:02:23 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/19 10:14:52 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:56:11 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	exit_game(t_data_global *data)
 		data->img.player.x, data->img.player.y);
 	if (data->img.player_exit == 0)
 	{
-		//close_window(&data);
-		//close_program(data); //esto no tiene sentido
+		close_window(&data);
 		exit(1);
 	}
 }

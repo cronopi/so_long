@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 10:56:03 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/19 10:14:46 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:56:35 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,7 @@ int	key_hook(int key, t_data_global *init)
 	//if (key == 65307)
 	if (key == 53)
 	{
-		//close_window(init);
-		//mlx_destroy_window(init->mlx, init->win);
-		//close_program(init);
+		close_window(init);
 		exit(1);
 	}
 	return (0);

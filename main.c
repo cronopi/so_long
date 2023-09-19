@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:20:26 by rcastano          #+#    #+#             */
-/*   Updated: 2023/09/19 10:43:05 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:55:48 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	close_program(t_data_global *init)
 
 int	close_window(t_data_global *init)
 {
-	//free_map(init->img.duplicate_map);
-	//free_map(init->img.map);
 	mlx_destroy_window(init->mlx, init->win);
 	close_program(init);
 	exit(1);
@@ -56,7 +54,7 @@ int	main(int argc, char **argv)
 	init.img.map = open_map(argc, argv, &init);
 	map_size = map_lengh_high(init.img.map);
 	init.win = mlx_new_window(init.mlx, (map_size.x * 32)
-			+ 64, (map_size.y * 32) + 64, "so_long"); 
+			+ 64, (map_size.y * 32) + 64, "so_long");
 	if (init.win == NULL)
 	{
 		free_double_pointer(&init);
